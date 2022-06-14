@@ -2,15 +2,41 @@ package ar.edu.fi.unju.entity;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "ciudadanos")
 public class Ciudadano {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ciu_nTramite")
 	private int nTramite;
+	
+	@Column(name = "ciu_dni")
 	private int dni;
+	
+	@Column(name = "ciu_email")
 	private String email;
+	
+	@Column(name = "ciu_estadoCivil")
 	private String estadoCivil;
+	
+	@Column(name = "ciu_provincia")
 	private String provincia;
+	
+	@Column(name = "ciu_telefono")
 	private int telefono;
+	
+	@Column(name = "ciu_fechaNacimiento")
 	private LocalDate fechaNacimiento;
+	
+	@Column(name = "ciu_contraseña")
 	private String contraseña;
 	
 	public Ciudadano() {
