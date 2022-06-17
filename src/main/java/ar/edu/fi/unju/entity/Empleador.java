@@ -1,12 +1,15 @@
 package ar.edu.fi.unju.entity;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -50,6 +53,9 @@ public class Empleador {
 	
 	@Column(name = "emp_telefono")
 	private int telefono;
+	
+	@OneToMany(mappedBy = "empleador")
+	private List<OfertaLaboral> ofertasLaborales = new ArrayList<OfertaLaboral>();
 	
 	public Empleador() {
 		// TODO Auto-generated constructor stub
@@ -128,6 +134,14 @@ public class Empleador {
 	}
 	public void setTelefono(int telefono) {
 		this.telefono = telefono;
+	}
+	
+	public List<OfertaLaboral> getOfertasLaborales() {
+		return ofertasLaborales;
+	}
+
+	public void setOfertasLaborales(List<OfertaLaboral> ofertasLaborales) {
+		this.ofertasLaborales = ofertasLaborales;
 	}
 	
 	public Empleador(String cuit, String contraseña, String razonSocial, String nombreComercial, String email,

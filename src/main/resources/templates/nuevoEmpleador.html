@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>TPFinal - nuevoEmpleador</title>
+		<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+	</head>
+	<body style="background-color: #232323;">
+		<header th:replace="layouts/header::header"></header>
+		
+		<div class="container col-6">
+			<h1 class="text-white text-center pt-3">Formulario de Registro</h1>
+			
+			<form action="" class="text-white">
+				<br>
+				<div class="row">
+					<div class="col">
+					    <input type="text" class="form-control" placeholder="CUIT">
+					</div>
+					<div class="col">
+					    <input type="email" class="form-control" placeholder="Email">
+					</div>
+				</div>
+				<div class="pt-3">
+				 	<input type="password" class="form-control" placeholder="Contraseña">
+				 </div>
+				<div class="row pt-3">
+					<div class="col">
+					    <input type="text" class="form-control" placeholder="Provincia">
+					</div>
+					<div class="col">
+					    <input type="number" class="form-control" placeholder="Teléfono">
+					</div>
+				</div>
+				<div class="pt-3">
+				 	<input type="date" class="form-control" placeholder="Inicio de actividad">
+				</div>
+				<div class="row pt-3">
+					<div class="col">
+					    <input type="text" class="form-control" placeholder="Domicilio">
+					</div>
+					<div class="col">
+					    <input type="text" class="form-control" placeholder="Página Web">
+					</div>
+				</div>
+				<div class="row pt-3">
+					<div class="col">
+					    <input type="text" class="form-control" placeholder="Nombre Comercial">
+					</div>
+					<div class="col">
+					    <input type="text" class="form-control" placeholder="Razón Social">
+					</div>
+				</div>
+				<div class="pt-2">
+				  	<label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
+				  	<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+				</div>
+				<div class="pt-3">
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+						<label class="form-check-label" for="inlineRadio1">Soltero/a</label>
+					</div>
+					<div class="form-check form-check-inline">
+					  	<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+					  	<label class="form-check-label" for="inlineRadio2">Casado/a</label>
+					</div>
+					<div class="form-check form-check-inline">
+					 	<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+					 	<label class="form-check-label" for="inlineRadio3">Otro/a</label>
+					</div>
+				 </div>
+				<div class="pt-3">
+				    <button type="submit" class="btn btn-outline-success">Registrar</button>
+				</div>
+			</form>
+		</div>
+		
+		
+		<footer th:replace="layouts/footer::footer"></footer>
+	</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>TPFinal - nuevoCiudadano</title>
+		<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+	</head>
+	<body style="background-color: #232323;">
+		<header th:replace="layouts/header::header"></header>
+		
+		<div class="container col-6">
+			<h1 class="text-white text-center pt-3">Formulario de Registro</h1>
+			
+			<form th:action="@{/ciudadano}" method="post" th:object="${ciudadanoAlias}" class="text-white">
+				<br>
+				<div class="row">
+					<div class="col">
+					    <input type="number" class="form-control" placeholder="DNI" th:field="*{dni}">
+					    <div class="text-danger" th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}"></div>
+					</div>
+					<div class="col">
+					    <input type="email" class="form-control" placeholder="Email" th:field="*{email}">
+					    <div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+					</div>
+				</div>
+				<div class="pt-3">
+				 	<input type="password" class="form-control" placeholder="Contraseña" th:field="*{contraseña}">
+				 	<div class="text-danger" th:if="${#fields.hasErrors('contraseña')}" th:errors="*{contraseña}"></div>
+				 </div>
+				 <div class="row pt-3">
+					<div class="col">
+					    <input type="text" class="form-control" placeholder="Provincia" th:field="*{provincia}">
+						<div class="text-danger" th:if="${#fields.hasErrors('provincia')}" th:errors="*{provincia}"></div>
+					</div>
+					<div class="col">
+					    <input type="number" class="form-control" placeholder="Teléfono" th:field="*{telefono}">
+						<div class="text-danger" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></div>
+					</div>
+				</div>
+				<div class="pt-3">
+				 	<input type="date" class="form-control" placeholder="Fecha de Nacimiento" th:field="*{fechaNacimiento}">
+					<div class="text-danger" th:if="${#fields.hasErrors('fechaNacimiento')}" th:errors="*{fechaNacimiento}"></div>
+				</div>
+				<div class="pt-3">
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Soltero/a" th:field="*{estadoCivil}">
+						<label class="form-check-label" for="inlineRadio1">Soltero/a</label>
+					</div>
+					<div class="form-check form-check-inline">
+					  	<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Casado/a" th:field="*{estadoCivil}">
+					  	<label class="form-check-label" for="inlineRadio2">Casado/a</label>
+					</div>
+					<div class="form-check form-check-inline">
+					 	<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="Otro/a" th:field="*{estadoCivil}">
+					 	<label class="form-check-label" for="inlineRadio3">Otro/a</label>
+					</div>
+					<div class="text-danger" th:if="${#fields.hasErrors('estadoCivil')}" th:errors="*{estadoCivil}"></div>
+				 </div>
+				<div class="pt-3">
+				    <button type="submit" class="btn btn-outline-success">Registrar</button>
+				</div>
+			</form>
+		</div>
+		
+		
+		<footer th:replace="layouts/footer::footer"></footer>
+	</body>
+</html>
