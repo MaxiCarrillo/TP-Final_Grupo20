@@ -18,33 +18,36 @@ public class CurriculumVitae {
 	@Column(name = "cur_id")
 	private long id;
 	
-	@Column(name = "cur_datosIdentidad")
+	@Column(name = "cur_datosIdentidad") //
 	private String datosIdentidad;
 	
-	@Column(name = "cur_contacto")
+	@Column(name = "cur_contacto") //
 	private String contacto;
 	
-	@Column(name = "cur_experienciaLaboral")
+	@Column(name = "cur_experienciaLaboral") //
 	private String experienciaLaboral;
 	
-	@Column(name = "cur_educacion")
+	@Column(name = "cur_educacion") //
 	private String educacion;
 	
-	@Column(name = "cur_idiomas")
+	@Column(name = "cur_idiomas") //
 	private String idiomas;
 	
-	@Column(name = "cur_conocimientosInformaticos")
+	@Column(name = "cur_conocimientosInformaticos") //
 	private String conocimientosInformaticos;
 	
-	@Column(name = "cur_informacionComplementaria")
+	@Column(name = "cur_informacionComplementaria") //
 	private String informacionComplementaria;
 	
-	@Column(name = "cur_datosAdicionales")
+	@Column(name = "cur_datosAdicionales") //
 	private String datosAdicionales;
 	
 	@OneToOne(mappedBy = "curriculum", fetch = FetchType.LAZY)
 	private Ciudadano ciudadano;
 	
+	public CurriculumVitae() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	public long getId() {
 		return id;

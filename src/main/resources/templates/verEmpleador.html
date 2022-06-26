@@ -10,66 +10,67 @@
 		<header th:replace="layouts/header::header"></header>
 		
 		<div class="container col-6">
-			<h1 class="text-white text-center pt-3">Formulario de Registro</h1>
+			<h1 class="text-white text-center pt-3">Empleador</h1>
 			
 			<form th:action="@{/empleador}" method="post" th:object="${empleadorAlias}" class="text-white">
 				<br>
 				<div class="row">
 					<div class="col">
-					    <input type="text" class="form-control" placeholder="CUIT" th:field="*{cuit}">
+					    <input type="text" class="form-control" placeholder="CUIT" th:field="*{cuit}" disabled>
 					    <div class="text-danger" th:if="${#fields.hasErrors('cuit')}" th:errors="*{cuit}"></div>
 					</div>
 					<div class="col">
-					    <input type="email" class="form-control" placeholder="Email" th:field="*{email}">
+					    <input type="email" class="form-control" placeholder="Email" th:field="*{email}" disabled>
 					    <div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
 					</div>
 				</div>
 				<div class="pt-3">
-				 	<input type="password" class="form-control" placeholder="Contraseña" th:field="*{contraseña}">
+				 	<input type="password" class="form-control" placeholder="Contraseña" th:field="*{contraseña}" disabled>
 				 	<div class="text-danger" th:if="${#fields.hasErrors('contraseña')}" th:errors="*{contraseña}"></div>
 				 </div>
 				<div class="row pt-3">
 					<div class="col">
-					    <input type="text" class="form-control" placeholder="Provincia" th:field="*{provincia}">
+					    <input type="text" class="form-control" placeholder="Provincia" th:field="*{provincia}" disabled>
 					    <div class="text-danger" th:if="${#fields.hasErrors('provincia')}" th:errors="*{provincia}"></div>
 					</div>
 					<div class="col">
-					    <input type="number" class="form-control" placeholder="Teléfono" th:field="*{telefono}">
+					    <input type="number" class="form-control" placeholder="Teléfono" th:field="*{telefono}" disabled>
 					    <div class="text-danger" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></div>
 					</div>
 				</div>
 				<div class="pt-3">
-				 	<input type="date" class="form-control" placeholder="Inicio de actividad" th:field="*{fechaInicio}">
+				 	<input type="date" class="form-control" placeholder="Inicio de actividad" th:field="*{fechaInicio}" disabled>
 				 	<div class="text-danger" th:if="${#fields.hasErrors('fechaInicio')}" th:errors="*{fechaInicio}"></div>
 				</div>
 				<div class="row pt-3">
 					<div class="col">
-					    <input type="text" class="form-control" placeholder="Domicilio" th:field="*{domicilio}">
+					    <input type="text" class="form-control" placeholder="Domicilio" th:field="*{domicilio}" disabled>
 					    <div class="text-danger" th:if="${#fields.hasErrors('domicilio')}" th:errors="*{domicilio}"></div>
 					</div>
 					<div class="col">
-					    <input type="text" class="form-control" placeholder="Página Web" th:field="*{paginaWeb}">
+					    <input type="text" class="form-control" placeholder="Página Web" th:field="*{paginaWeb}" disabled>
 					    <div class="text-danger" th:if="${#fields.hasErrors('paginaWeb')}" th:errors="*{paginaWeb}"></div>
 					</div>
 				</div>
 				<div class="row pt-3">
 					<div class="col">
-					    <input type="text" class="form-control" placeholder="Nombre Comercial" th:field="*{nombreComercial}">
+					    <input type="text" class="form-control" placeholder="Nombre Comercial" th:field="*{nombreComercial}" disabled>
 					    <div class="text-danger" th:if="${#fields.hasErrors('nombreComercial')}" th:errors="*{nombreComercial}"></div>
 					</div>
 					<div class="col">
-					    <input type="text" class="form-control" placeholder="Razón Social" th:field="*{razonSocial}">
+					    <input type="text" class="form-control" placeholder="Razón Social" th:field="*{razonSocial}" disabled>
 					    <div class="text-danger" th:if="${#fields.hasErrors('razonSocial')}" th:errors="*{razonSocial}"></div>
 					</div>
 				</div>
 				<div class="pt-2">
 				  	<label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
-				  	<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" th:field="*{descripcion}"></textarea>
+				  	<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" th:field="*{descripcion}" disabled></textarea>
 				  	<div class="text-danger" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></div>
 				</div>
 				<div class="pt-3">
-				    <button type="submit" class="btn btn-outline-success">Registrar</button>
-				    <a th:href="@{/empleador/listaEmpleadores}" class="btn btn-outline-danger">Ver empleadores</a>
+				    <a th:href="@{/empleador/editar/}+*{id}" class="btn btn-outline-warning">Editar</a>
+				    <a th:href="@{/empleador/eliminar/}+*{id}"class="btn btn-outline-danger">Eliminar</a>
+				    <a th:href="@{/empleador/listaEmpleadores}" class="btn btn-outline-primary">Ver empleadores</a>
 				</div>
 			</form>
 		</div>

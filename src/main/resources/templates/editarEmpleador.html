@@ -10,13 +10,15 @@
 		<header th:replace="layouts/header::header"></header>
 		
 		<div class="container col-6">
-			<h1 class="text-white text-center pt-3">Formulario de Registro</h1>
+			<h1 class="text-white text-center pt-3">Editar Registro</h1>
 			
-			<form th:action="@{/empleador}" method="post" th:object="${empleadorAlias}" class="text-white">
+			<form th:action="@{/empleador/modificar}" method="post" th:object="${empleadorAlias}" class="text-white">
 				<br>
 				<div class="row">
 					<div class="col">
-					    <input type="text" class="form-control" placeholder="CUIT" th:field="*{cuit}">
+						<input type="hidden" th:field="*{id}">
+						<input type="hidden" th:field="*{cuit}">
+					    <input type="text" class="form-control" placeholder="CUIT" th:field="*{cuit}" disabled>
 					    <div class="text-danger" th:if="${#fields.hasErrors('cuit')}" th:errors="*{cuit}"></div>
 					</div>
 					<div class="col">
@@ -68,7 +70,7 @@
 				  	<div class="text-danger" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></div>
 				</div>
 				<div class="pt-3">
-				    <button type="submit" class="btn btn-outline-success">Registrar</button>
+				    <button type="submit" class="btn btn-outline-success">Guardar</button>
 				    <a th:href="@{/empleador/listaEmpleadores}" class="btn btn-outline-danger">Ver empleadores</a>
 				</div>
 			</form>

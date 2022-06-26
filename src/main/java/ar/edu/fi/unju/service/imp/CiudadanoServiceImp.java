@@ -27,13 +27,11 @@ public class CiudadanoServiceImp implements ICiudadanoService {
 
 	@Override
 	public void modificarCiudadano(Ciudadano ciudadano) {
-		// TODO Auto-generated method stub
-
+		ciudadanoRepository.save(ciudadano);
 	}
 
 	@Override
 	public void eliminarCiudadano(int dni) {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -45,7 +43,6 @@ public class CiudadanoServiceImp implements ICiudadanoService {
 
 	@Override
 	public Ciudadano buscarCiudadano(int dni) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

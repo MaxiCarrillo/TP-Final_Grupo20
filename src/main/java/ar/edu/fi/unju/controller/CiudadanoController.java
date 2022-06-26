@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.fi.unju.entity.Ciudadano;
+import ar.edu.fi.unju.entity.CurriculumVitae;
 import ar.edu.fi.unju.service.ICiudadanoService;
 
 @Controller
@@ -28,7 +29,6 @@ public class CiudadanoController {
 	@GetMapping("/cargar")
 	public String ciudadanoCargarPage(Model model) {
 		model.addAttribute("ciudadanoAlias", ciudadanoService.getCiudadano());
-		LOGGER.info("Le asigna un objeto (ciudadano) al modelo");
 		return "nuevoCiudadano";
 	}
 
@@ -40,14 +40,21 @@ public class CiudadanoController {
 			return modeloVista;
 		}
 		
-		ModelAndView modeloVista = new ModelAndView ("redirect:/ciudadano/listaCandidatos");
+		ModelAndView modeloVista = new ModelAndView ("redirect:/ciudadano/listaCiudadanos");
 		ciudadanoService.guardarCiudadano(ciudadano);
+		LOGGER.info("Guarda un ciudadano en la base de datos");
 		return modeloVista;
 	}
 	
-	@GetMapping("/listaCandidatos")
+	@GetMapping("/listaCiudadanos")
 	public String mostrarCiudadanos(Model model) {
 		model.addAttribute("ciudadanos", ciudadanoService.getListaCiudadano());
 		return "ciudadanos";
+	}
+	
+	@GetMapping("/crear/cv")
+	public String curriculumCargarPage(Model model) {
+		model.addAttribute("curriculumAlias", new CurriculumVitae());
+		return "crearCurriculum";
 	}
 }

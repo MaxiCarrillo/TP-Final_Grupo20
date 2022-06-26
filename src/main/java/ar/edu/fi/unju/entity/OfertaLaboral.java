@@ -19,31 +19,31 @@ public class OfertaLaboral {
 	@Column(name = "ofl_id")
 	private long id;
 	
-	@Column(name = "ofl_cantidadVacantes")
+	@Column(name = "ofl_cantidadVacantes") //
 	private int cantidadVacantes;
 	
-	@Column(name = "ofl_resumenPuesto")
+	@Column(name = "ofl_resumenPuesto") //
 	private String resumenPuesto;
 	
-	@Column(name = "ofl_disponbilidadHoraria")
+	@Column(name = "ofl_disponbilidadHoraria") //
 	private String disponibilidadHoraria;
 	
-	@Column(name = "ofl_principalesTareas")
+	@Column(name = "ofl_principalesTareas") //
 	private String principalesTareas;
 	
-	@Column(name = "ofl_datosContacto")
+	@Column(name = "ofl_datosContacto") //
 	private String datosContacto;
 	
-	@Column(name = "ofl_jornada")
+	@Column(name = "ofl_jornada") //
 	private String jornada;
 	
-	@Column(name = "ofl_requisitos")
+	@Column(name = "ofl_requisitos") //
 	private String requisitos;
 	
-	@Column(name = "ofl_salario")
+	@Column(name = "ofl_salario") //
 	private double salario;
 	
-	@Column(name = "ofl_beneficios")
+	@Column(name = "ofl_beneficios") //
 	private String beneficios;
 	
 	@Column(name = "ofl_disponible")

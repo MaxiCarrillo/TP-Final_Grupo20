@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>TPFinal - Inicio</title>
+		<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+	</head>
+	<body style="background-color: #232323;">
+		<header th:replace="layouts/header::header"></header>
+		<div class="container">
+			<h1 class="text-white text-center pt-3 mb-3">Empleadores</h1>
+			<table class="table text-white text-center">
+				<thead>
+					<tr>
+						<th scope="col">ID</th>
+						<th scope="col">Nombre Comercial</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="empleador: ${empleadores}">
+						<th scope="row" th:text="${empleador.id}"></th>
+						<td th:text="${empleador.nombreComercial}"></td>
+						<td>
+							<a th:href="@{/empleador/ver/}+${empleador.id}" class="btn btn-primary">Ver</a>
+							<a th:href="@{/empleador/editar/}+${empleador.id}" class="btn btn-warning">Editar</a>
+							<a th:href="@{/empleador/eliminar/}+${empleador.id}" class="btn btn-danger">Eliminar</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>	
+		<footer th:replace="layouts/footer::footer"></footer>
+	</body>
+</html>
