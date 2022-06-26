@@ -1,13 +1,21 @@
 package ar.edu.fi.unju.entity;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "empleadores")
@@ -18,38 +26,55 @@ public class Empleador {
 	@Column(name = "emp_id")
 	private long id;
 	
+	@NotEmpty
 	@Column(name ="emp_cuit")
 	private String cuit;
 	
+	@NotEmpty
 	@Column(name ="emp_contraseña")
 	private String contraseña;
 	
+	@NotEmpty
 	@Column(name ="emp_razonSocial")
 	private String razonSocial;
 	
+	@NotEmpty
 	@Column(name = "emp_nombreComercial")
 	private String nombreComercial;
 	
+	@NotEmpty
 	@Column(name = "emp_email")
 	private String email;
 	
+	@NotEmpty
 	@Column(name = "emp_domicilio")
 	private String domicilio;
 	
+	@NotEmpty
 	@Column(name = "emp_provincia")
 	private String provincia;
 	
+	@NotEmpty
 	@Column(name = "emp_paginaWeb")
 	private String paginaWeb;
 	
+	@NotEmpty
 	@Column(name = "emp_descripcion")
 	private String descripcion;
 	
+	@Past
+	@NotNull(message="La fecha no puede ser nula")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@Column(name = "emp_fechaInicio")
 	private LocalDate fechaInicio;
 	
+	@NotNull
 	@Column(name = "emp_telefono")
-	private int telefono;
+	private long telefono;
+	
+	//Autorecupera
+	@OneToMany(mappedBy = "empleador")
+	private List<OfertaLaboral> ofertasLaborales = new ArrayList<OfertaLaboral>();
 	
 	public Empleador() {
 		// TODO Auto-generated constructor stub
@@ -123,16 +148,24 @@ public class Empleador {
 	public void setFechaInicio(LocalDate fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
-	public int getTelefono() {
+	public long getTelefono() {
 		return telefono;
 	}
-	public void setTelefono(int telefono) {
+	public void setTelefono(long telefono) {
 		this.telefono = telefono;
+	}
+	
+	public List<OfertaLaboral> getOfertasLaborales() {
+		return ofertasLaborales;
+	}
+
+	public void setOfertasLaborales(List<OfertaLaboral> ofertasLaborales) {
+		this.ofertasLaborales = ofertasLaborales;
 	}
 	
 	public Empleador(String cuit, String contraseña, String razonSocial, String nombreComercial, String email,
 			String domicilio, String provincia, String paginaWeb, String descripcion, LocalDate fechaInicio,
-			int telefono) {
+			long telefono) {
 		super();
 		this.cuit = cuit;
 		this.contraseña = contraseña;
@@ -146,4 +179,5 @@ public class Empleador {
 		this.fechaInicio = fechaInicio;
 		this.telefono = telefono;
 	}
+
 }
