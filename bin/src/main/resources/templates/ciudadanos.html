@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>TPFinal - Inicio</title>
+		<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+	</head>
+	<body style="background-color: #232323;">
+		<header th:replace="layouts/header::header"></header>
+		<div class="container">
+			<h1 class="text-white text-center pt-3 mb-3">Ciudadanos</h1>
+			<table class="table text-white text-center">
+				<thead>
+					<tr>
+					<th scope="col">ID</th>
+					<th scope="col">DNI</th>
+					<th scope="col">Correo Electronico</th>
+					<th scope="col">Provincia</th>
+					<th scope="col">Teléfono</th>
+					<th scope="col">Fecha de Nacimiento</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="ciudadano: ${ciudadanos}">
+						<th scope="row" th:text="${ciudadano.id}"></th>
+						<td th:text="${ciudadano.dni}"></td>
+						<td th:text="${ciudadano.email}"></td>
+						<td th:text="${ciudadano.provincia}"></td>
+						<td th:text="${ciudadano.telefono}"></td>
+						<td th:text="${ciudadano.fechaNacimiento}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>	
+		<footer th:replace="layouts/footer::footer"></footer>
+	</body>
+</html>

@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ar.edu.fi.unju.entity.Empleador;
 import ar.edu.fi.unju.entity.OfertaLaboral;
 import ar.edu.fi.unju.service.IEmpleadorService;
+import ar.edu.fi.unju.service.IOfertaService;
 
 @Controller
 @RequestMapping("/empleador")
@@ -24,6 +25,9 @@ public class EmpleadorController {
 
 	@Autowired
 	IEmpleadorService empleadorService;
+	
+	@Autowired
+	IOfertaService ofertaService;
 	
 	Log LOGGER = LogFactory.getLog(EmpleadorController.class);
 	
@@ -92,7 +96,22 @@ public class EmpleadorController {
 	
 	@GetMapping("/crear/oferta")
 	public String cargarOfertaPage(Model model) {
-		model.addAttribute("ofertaAlias", new OfertaLaboral());
+		model.addAttribute("ofertaAlias", ofertaService.getOferta());
 		return "crearOferta";
 	}
+	
+	@PostMapping("/oferta")
+	public ModelAndView ofertaGuardarPage(@Validated @ModelAttribute("ofertaAlias") OfertaLaboral ofertaLaboral, BindingResult bindingResult) {
+		if(bindingResult.hasErrors()) {
+			ModelAndView modeloVista = new ModelAndView("crearOferta");
+			modeloVista.addObject("ofertaAlias", ofertaLaboral);
+			return modeloVista;
+		}
+		
+		ModelAndView modeloVista = new ModelAndView("redirect:/empleador/listaEmpleadores");
+		ofertaService.guardarOferta(ofertaLaboral);
+		return modeloVista;
+	}
+	
 }
+

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>TPFinal - nuevoEmpleador</title>
+		<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+	</head>
+	<body style="background-color: #232323;">
+		<header th:replace="layouts/header::header"></header>
+		
+		<div class="container col-6">
+			<h1 class="text-white text-center pt-3">Curriculum</h1>
+			
+			<form th:action="@{/ciudadano/cv}" method="post" th:object="${curriculumAlias}" class="text-white">
+				<br>
+				<div class="row">
+					<div class="col">
+					    <input type="text" class="form-control" placeholder="Contacto" th:field="*{contacto}">
+					    <div class="text-danger" th:if="${#fields.hasErrors('contacto')}" th:errors="*{contacto}"></div>
+					</div>
+					<div class="col">
+					    <input type="text" class="form-control" placeholder="Educación" th:field="*{educacion}">
+					    <div class="text-danger" th:if="${#fields.hasErrors('educacion')}" th:errors="*{educacion}"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col pt-2">
+						 <label for="areaExperienciaLaboral" class="form-label">Experiencia Laboral</label>
+						 <textarea class="form-control" id="areaExperienciaLaboral" rows="3" th:field="*{experienciaLaboral}"></textarea>
+						 <div class="text-danger" th:if="${#fields.hasErrors('experienciaLaboral')}" th:errors="*{experienciaLaboral}"></div>
+					</div>
+					<div class="col pt-2">
+						 <label for="areaDatosIdentidad" class="form-label">Datos de Identidad</label>
+						 <textarea class="form-control" id="areaDatosIdentidad" rows="3" th:field="*{datosIdentidad}"></textarea>
+						 <div class="text-danger" th:if="${#fields.hasErrors('datosIdentidad')}" th:errors="*{datosIdentidad}"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col pt-2">
+						 <label for="areaIdiomas" class="form-label">Idiomas</label>
+						 <textarea class="form-control" id="areaIdiomas" rows="3" th:field="*{idiomas}"></textarea>
+						 <div class="text-danger" th:if="${#fields.hasErrors('idiomas')}" th:errors="*{idiomas}"></div>
+					</div>
+					<div class="col pt-2">
+						 <label for="areaConocimientosInformaticos" class="form-label">Conocimientos Informaticos</label>
+						 <textarea class="form-control" id="areaConocimientosInformaticos" rows="3" th:field="*{conocimientosInformaticos}"></textarea>
+						 <div class="text-danger" th:if="${#fields.hasErrors('conocimientosInformaticos')}" th:errors="*{conocimientosInformaticos}"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col pt-2">
+						 <label for="areaInformacionComplementaria" class="form-label">Informacion Complementaria</label>
+						 <textarea class="form-control" id="areaInformacionComplementaria" rows="3" th:field="*{informacionComplementaria}"></textarea>
+						 <div class="text-danger" th:if="${#fields.hasErrors('informacionComplementaria')}" th:errors="*{informacionComplementaria}"></div>
+					</div>
+					<div class="col pt-2">
+						 <label for="areaDatosAdicionales" class="form-label">Datos Adicionales</label>
+						 <textarea class="form-control" id="areaDatosAdicionales" rows="3" th:field="*{datosAdicionales}"></textarea>
+						 <div class="text-danger" th:if="${#fields.hasErrors('datosAdicionales')}" th:errors="*{datosAdicionales}"></div>
+					</div>
+				</div>
+				<div class="pt-3">
+				    <button type="submit" class="btn btn-outline-success">Crear curriculum</button>
+				    <a th:href="@{/ciudadano/listaCiudadanos}" class="btn btn-outline-danger">Cancelar</a>
+				</div>
+			</form>
+		</div>
+		
+		
+		<footer th:replace="layouts/footer::footer"></footer>
+	</body>
+</html>
