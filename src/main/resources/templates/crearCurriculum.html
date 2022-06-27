@@ -12,7 +12,8 @@
 		<div class="container col-6">
 			<h1 class="text-white text-center pt-3">Curriculum</h1>
 			
-			<form th:action="@{/ciudadano/cv}" method="post" th:object="${curriculumAlias}" class="text-white">
+			<form th:action="@{/ciudadano/crear/cv}" method="post" th:object="${curriculumAlias}" class="text-white">
+				<input type="hidden" th:field="*{id}"/>
 				<br>
 				<div class="row">
 					<div class="col">
@@ -61,7 +62,7 @@
 					</div>
 				</div>
 				<div class="pt-3">
-				    <button type="submit" class="btn btn-outline-success">Crear curriculum</button>
+				    <button type="submit" class="btn btn-outline-success">Guardar CV</button>
 				    <a th:href="@{/ciudadano/listaCiudadanos}" class="btn btn-outline-danger">Cancelar</a>
 				</div>
 			</form>

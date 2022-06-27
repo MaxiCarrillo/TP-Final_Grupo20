@@ -42,8 +42,8 @@ public class CiudadanoServiceImp implements ICiudadanoService {
 	}
 
 	@Override
-	public Ciudadano buscarCiudadano(int dni) {
-		return null;
+	public Ciudadano buscarCiudadano(long id) {
+		return ciudadanoRepository.findById(id).get();
 	}
 
 }

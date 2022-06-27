@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ar.edu.fi.unju.entity.Ciudadano;
 import ar.edu.fi.unju.entity.CurriculumVitae;
 import ar.edu.fi.unju.service.ICiudadanoService;
+import ar.edu.fi.unju.service.ICurriculumService;
 
 @Controller
 @RequestMapping("/ciudadano")
@@ -23,6 +25,11 @@ public class CiudadanoController {
 	
 	@Autowired
 	ICiudadanoService ciudadanoService;
+	
+	@Autowired
+	ICurriculumService curriculumService;
+	
+	private Ciudadano ciudadano;
 	
 	Log LOGGER = LogFactory.getLog(CiudadanoController.class);
 	
@@ -52,9 +59,40 @@ public class CiudadanoController {
 		return "ciudadanos";
 	}
 	
-	@GetMapping("/crear/cv")
-	public String curriculumCargarPage(Model model) {
-		model.addAttribute("curriculumAlias", new CurriculumVitae());
+	@GetMapping("/crear/cv/{id}")
+	public String curriculumCargarPage(@PathVariable("id") long id, Model model) {
+		ciudadano = ciudadanoService.buscarCiudadano(id);
+		if(ciudadano.getCurriculum()==null) {
+			model.addAttribute("curriculumAlias", curriculumService.getCurriculum());
+		}else {
+			model.addAttribute("curriculumAlias", ciudadano.getCurriculum());
+		}
+		
 		return "crearCurriculum";
 	}
+	
+	@PostMapping("/crear/cv")
+	public ModelAndView modificarCandidato(@Validated @ModelAttribute("curriculumAlias") CurriculumVitae curriculumVitae, BindingResult bindingResult) {
+		if(bindingResult.hasErrors()) {
+			ModelAndView modeloVista = new ModelAndView ("crearCurriculum");
+			modeloVista.addObject("curriculumAlias", curriculumVitae);
+			return modeloVista;
+		}
+		
+		ModelAndView modeloVista = new ModelAndView ("redirect:/ciudadano/listaCiudadanos");
+		curriculumVitae.setCiudadano(ciudadano);
+		ciudadano.setCurriculum(curriculumVitae);
+		curriculumService.guardarCurriculum(curriculumVitae);
+		ciudadanoService.modificarCiudadano(ciudadano);
+		return modeloVista;
+	}
+	
+	@GetMapping("/ver/{id}")
+	public ModelAndView verCiudadano(@PathVariable("id") long id) {
+		ModelAndView modeloVista = new ModelAndView("verCiudadano");
+		Ciudadano ciudadano = ciudadanoService.buscarCiudadano(id);
+		modeloVista.addObject("ciudadanoAlias", ciudadano);
+		return modeloVista;
+	}
+	
 }

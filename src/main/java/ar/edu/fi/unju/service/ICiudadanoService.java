@@ -10,5 +10,5 @@ public interface ICiudadanoService {
 	public void modificarCiudadano(Ciudadano ciudadano);
 	public void eliminarCiudadano(int dni);
 	public List<Ciudadano> getListaCiudadano();
-	public Ciudadano buscarCiudadano(int dni);
+	public Ciudadano buscarCiudadano(long id);
 }

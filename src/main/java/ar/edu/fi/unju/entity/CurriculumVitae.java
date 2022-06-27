@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "curriculums")
@@ -18,27 +19,35 @@ public class CurriculumVitae {
 	@Column(name = "cur_id")
 	private long id;
 	
+	@NotNull
 	@Column(name = "cur_datosIdentidad") //
 	private String datosIdentidad;
 	
+	@NotNull
 	@Column(name = "cur_contacto") //
 	private String contacto;
 	
+	@NotNull
 	@Column(name = "cur_experienciaLaboral") //
 	private String experienciaLaboral;
 	
+	@NotNull
 	@Column(name = "cur_educacion") //
 	private String educacion;
 	
+	@NotNull
 	@Column(name = "cur_idiomas") //
 	private String idiomas;
 	
+	@NotNull
 	@Column(name = "cur_conocimientosInformaticos") //
 	private String conocimientosInformaticos;
 	
+	@NotNull
 	@Column(name = "cur_informacionComplementaria") //
 	private String informacionComplementaria;
 	
+	@NotNull
 	@Column(name = "cur_datosAdicionales") //
 	private String datosAdicionales;
 	

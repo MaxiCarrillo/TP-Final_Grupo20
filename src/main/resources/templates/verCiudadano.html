@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>TPFinal - Inicio</title>
+		<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+	</head>
+	<body style="background-color: #232323;">
+		<header th:replace="layouts/header::header"></header>
+		
+		<div class="container text-white" th:object="${ciudadanoAlias}">
+			<h3 class="text-center pt-3" > DNI:
+				<small class="text-muted" th:text="*{dni}"></small>
+			</h3>
+			<dl class="row ">
+			  <dt class="col-sm-5 text-center">Correo Electrónico</dt>
+			  <dd class="col-sm-7 text-primary" th:text="*{email}"></dd>
+			
+			  <dt class="col-sm-5 text-center">Estado Civil</dt>
+			  <dd class="col-sm-7 text-primary" th:text="*{estadoCivil}">
+			  </dd>
+			
+			  <dt class="col-sm-5 text-center">Provincia</dt>
+			  <dd class="col-sm-7 text-primary" th:text="*{provincia}"></dd>
+			
+			  <dt class="col-sm-5 text-center">Teléfono</dt>
+			  <dd class="col-sm-7 text-primary" th:text="*{telefono}"></dd>
+			  
+			  <dt class="col-sm-5 text-center">Fecha de Nacimiento</dt>
+			  <dd class="col-sm-7 text-primary" th:text="*{fechaNacimiento}"></dd>
+			
+			</dl>
+			
+		</div>
+			
+		<footer th:replace="layouts/footer::footer"></footer>
+	</body>
+</html>
